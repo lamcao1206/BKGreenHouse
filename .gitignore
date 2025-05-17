@@ -1,0 +1,7 @@
+test.http
+
+myenv/
+
+.env
+api.txt
+.DS_Store
