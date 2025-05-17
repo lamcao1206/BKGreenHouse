@@ -30,3 +30,10 @@ def humidity_stream():
         SensorController.get_humidity_stream(current_app.data_queue), 
         mimetype="text/event-stream"
     )
+
+@sensor_bp.route("/ai/stream", methods=['GET'])
+def ai_stream():
+    return Response(
+        SensorController.get_ai_output_stream(current_app.data_queue), 
+        mimetype="text/event-stream"
+    )

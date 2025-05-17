@@ -59,8 +59,9 @@ class SensorController:
                 if not data_queue.empty():
                     data = data_queue.get()
                     if data['topic'] == sensor_topic:
-                        value = float(data.get('data'))
-                        SensorController.update_or_insert_record(sensor_topic, value)
+                        if (sensor_topic != 'ai'):
+                            value = float(data.get('data'))
+                            SensorController.update_or_insert_record(sensor_topic, value)
                         yield f"data: {json.dumps(data)}\n\n"
                 else:
                     yield "data: {\"connection\": \"alive\"}\n\n"
@@ -84,3 +85,7 @@ class SensorController:
     @staticmethod
     def get_humidity_stream(data_queue):
         return SensorController.get_sensor_stream(data_queue, 'humidity')
+    
+    @staticmethod
+    def get_ai_output_stream(data_queue):
+        return SensorController.get_sensor_stream(data_queue, 'ai')
