@@ -1,0 +1,8 @@
+Adafruit_IO
+setuptools
+python-dotenv
+scikit-learn
+pandas
+tensorflow
+numpy
+seaborn
