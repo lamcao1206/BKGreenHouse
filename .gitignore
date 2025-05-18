@@ -1,5 +1,5 @@
 test.http
-
+.DS_Store
 myenv/
 
 .env
