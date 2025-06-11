@@ -45,14 +45,23 @@ export default function WaterControlCard() {
   };
 
   return (
-    <div className="container-fluid bg-lime-200 p-2">
+    <div className="container-fluid p-2"
+      style={{
+        background: "linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)",
+      }}>
       <div
         className="bg-white shadow-lg rounded-xl p-6 mt-5 "
         style={{ width: "80vw", marginLeft: "9vw", marginBottom: "9vh" }}
       >
-        <h1 className="text-center text-3xl font-bold text-gray-800">
-          History
-        </h1>
+        <div className="text-center text-black mt-5">
+                <h1
+                  className="display-6 fw-bold mb-3"
+                  style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.3)" }}
+                >
+                  📑 Data History
+                </h1>
+                
+              </div>
 
         <div className="justify-content-center d-flex flex-row ">
           <div
@@ -62,7 +71,7 @@ export default function WaterControlCard() {
             {/* Radio Buttons */}
             <div className="ms-4 m-2 border-black" style={{ width: "48%" }}>
               <div className="mt-3">
-                <p className="text-lg font-medium text-black mt-2">
+                <p className="text-lg font-medium fw-bold text-black mt-2">
                   Choose data you want to see:
                 </p>
                 <div className="mt-4 space-x-6">
@@ -92,7 +101,7 @@ export default function WaterControlCard() {
             <div className="m-2 border-black" style={{ width: "48%" }}>
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex flex-col">
-                  <label className="font-medium text-gray-700 mt-3 mb-2">
+                  <label className="font-medium fw-bold text-gray-700 mt-3 mb-2">
                     Search by date:
                   </label>
                   <input

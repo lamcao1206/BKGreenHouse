@@ -122,10 +122,19 @@ export default function Login() {
             </a>
           </p>
           <div className="text-center mt-3">
-            <Link className="text-decoration-none" to="/" style={{ color: '#121C57' }}>
-              Quay lại
-            </Link>
-          </div>
+  <Link 
+    className="btn btn-danger text-decoration-none fw-bold px-4 py-2"
+    to="/" 
+    style={{ 
+      borderRadius: '10px',
+      fontSize: '0.95em',
+      letterSpacing: '0.5px'
+    }}
+  >
+    <i className="fas fa-arrow-left me-2"></i>
+    Quay lại
+  </Link>
+</div>
         </form>
       </div>
     </div>

@@ -9,7 +9,6 @@ const Home = () => {
     <>
       <Navbar />
       <Body />
-      <Subbody />
       <Footer />
       <Subfooter />
     </>

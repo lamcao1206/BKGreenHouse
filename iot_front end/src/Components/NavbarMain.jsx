@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import logo from "../assets/hcmut.png";
 
-
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
@@ -34,7 +33,7 @@ const Navbar = () => {
     >
       <div className="justify-center flex items-center mr-auto">
         <img src={logo} alt="HCMUT Logo" className="h-18 mr-8" />
-        <h1 className="text-gray-800 mr-auto">Green House</h1>
+        <h1 className="text-gray-800 mr-auto fw-bold">Green House</h1>
       </div>
       <div>
         <ul id="navbar" className="flex space-x-8 items-center">
@@ -56,8 +55,6 @@ const Navbar = () => {
               </a>
             </li>
           </Link>
-
-          
 
           {/* Link Faucet Control */}
           <Link to="/History" className="text-decoration-none">

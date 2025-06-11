@@ -11,7 +11,7 @@ const Navbar = () => {
     >
       <div className="justify-center flex items-center mr-auto">
         <img src={logo} alt="HCMUT Logo" className="h-18 mr-8" />
-        <h1 className="text-gray-800 mr-auto">Green House</h1>
+        <h1 className="text-gray-800 mr-auto fw-bold">Green House</h1>
       </div>
       <div>
         <ul id="navbar" className="flex space-x-8">
