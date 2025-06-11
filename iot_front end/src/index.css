@@ -1,0 +1,365 @@
+@import "tailwindcss";
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+h2 {
+    font-size: 46px;
+    line-height: 54px;
+    color: #223;
+
+}
+
+h5{
+    color: #05386B !important;
+}
+
+.indam:hover{
+    color: #05386B !important;
+    font-weight: bold;
+}
+
+
+p {
+    font-size: 16px;
+    color: #465b52;
+    margin: 15px 0 20px 0;
+}
+
+
+
+/*  HEADER  */
+#header {
+    padding: 20px 80px;
+    background-color: #E3E6F3;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+
+
+}
+
+/* THANH NGANG TREN HEADER  */
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+
+}
+
+#navbar li a {
+    text-decoration: none;
+    font-size: 18px;
+    font-style: 600;
+    color: #05386B;
+    font-weight: bold;
+    transition: 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#navbar li a:hover,
+#navbar li a.active {
+    color:  #EDF5E1;
+    font-weight: bold;
+}
+
+
+#navbar li a.active:not(.login,.oke,.oke1)::after,
+#navbar li a:hover:not(.login,.oke,.oke1)::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #05386B;
+    position: absolute;
+    bottom: -4px;
+    left: 30px;
+}
+
+#navbar li a.active.oke::after,
+#navbar li a:hover.oke::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #05386B;
+    position: absolute;
+    bottom: -4px;
+    left: 40px;
+}
+
+#navbar li a.active.oke1::after,
+#navbar li a:hover.oke1::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: #05386B;
+    position: absolute;
+    bottom: -4px;
+    left: 40px;
+}
+
+
+
+#page-header
+{
+    background-image: url("img/b1.jpg");
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 14px;
+
+}
+
+
+#page-header h2,
+#page-header p
+{
+    color: #fff;
+    
+}
+
+#page-header.about-header{
+    background-image: url("assets/about-banner.png");
+   
+}
+
+#about-head{
+    display: flex;
+    align-items: center;
+
+}
+
+#about-head div{
+    padding-left: 40px;
+}
+
+#about-head img{
+    width: 50%;
+    height: auto;
+
+}
+
+.section-p1 {
+    padding: 40px 80px;
+
+}
+
+
+#feature .fe-box {
+    width: 180px;
+    text-align: center;
+    padding: 25px 15px;
+    box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+    border: 1px solid #cce7d0;
+    border-radius: 4px;
+    margin: 15px;
+}
+
+    #feature .fe-box:hover {
+        box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
+    }
+
+    #feature .fe-box img {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #feature .fe-box h6 {
+        padding: 9px 8px 6px 8px;
+        line-height: 1;
+        border-radius: 4px;
+        color: #088178;
+        background-color: #fddde4;
+        display: inline-block;
+    }
+
+#feature {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+    #feature .fe-box:nth-child(2) h6 {
+        background-color: #cdebbc;
+    }
+
+    #feature .fe-box:nth-child(3) h6 {
+        background-color: #d1e8f2;
+    }
+
+    #feature .fe-box:nth-child(4) h6 {
+        background-color: #cdd4f8;
+    }
+
+    #feature .fe-box:nth-child(5) h6 {
+        background-color: #f6bdf6;
+    }
+
+    #feature .fe-box:nth-child(6) h6 {
+        background-color: #fff2e5;
+    }
+
+
+    #feature .fe-box p {
+        font-family: 'Arial', sans-serif;
+        font-size: 14px;
+        color: #333;
+    }
+
+
+
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    footer .col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+
+    }
+
+    footer .col p{
+        font-size: 14px;
+        color:  #05386B;
+    }
+    
+    footer .logo {
+        margin-bottom: 30px;
+   
+    }
+    
+    footer h4 {
+        font-size: 20px;
+        padding-bottom: 20px;
+        font-weight: bold;
+    
+    }
+    
+    footer p {
+        font-size: 13px;
+        padding-bottom: 0 0 8px 0;
+    }
+    
+    footer a {
+        font-size: 15px;
+        text-decoration: none;
+        color:  #05386B;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    
+    footer .follow {
+        margin-top: 20px;
+    
+    }
+    
+    footer .follow i:hover,
+    footer a:hover {
+        color: orange;
+    
+    }
+    
+    footer .copyright {
+        width: 100%;
+        text-align: center;
+    }
+    
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("assets/greenhouse.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .account-box {
+        max-width: 400px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ */
+    }
+    
+    .hi:hover {
+        background-color: forestgreen !important;
+    }
+
+
+    .welcome-section h1 {  
+        font-family: 'Sitka Display';  
+        font-size: 3rem;  
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  
+    }  
+
+    .welcome-section h2 {  
+        font-family: 'Sitka Display';  
+        font-size: 2.5rem;  
+        transition: transform 0.3s, color 0.3s;  
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  
+    }  
+    .welcome-section h2 {  
+        transform: scale(1.1);  
+        color: #ffeb3b;  
+    }  
+    .welcome-section p {  
+        font-size: 1.2rem;  
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);  
+    }  
+
+
+    .card:hover {  
+        transform: scale(1.05);  
+        transition: transform 0.3s ease-in-out;  
+    }  
+
+
+    .welcome-section {
+        background: url(https://cdn.pixabay.com/photo/2023/03/21/20/39/facade-7868160_1280.jpg) no-repeat center center/cover;  
+        color: white;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        justify-content: center;
+        
+    }
+
+    .history{
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .data-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s, border-color 0.5s;
+  cursor: pointer;
+  border-radius: 30px !important;
+}
+.data-card:hover {
+  transform: scale(1.06) translateY(-8px);
+  box-shadow: 0 12px 36px 0 rgba(60, 180, 75, 0.25), 0 2px 12px 0 rgba(0,0,0,0.12);
+  border-color: #1e90ff !important;
+  z-index: 2;
+}

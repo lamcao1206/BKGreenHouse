@@ -1,4 +1,5 @@
 import os
+import logging
 from flask import Flask
 from flask_cors import CORS
 from queue import Queue
@@ -7,13 +8,18 @@ from app.utils.mqtt_client import MQTTClient
 from app.utils.db import init_db, close_db
 from app.routes import register_routes
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 load_dotenv()
 
 def create_app():
     app = Flask(__name__)
     
     client_host = os.getenv("CLIENT_HOST")
-    CORS(app, resources={r"*": {"origins": client_host}})
+    logger.info("Clienthost %s", client_host)
+    CORS(app, resources={r"*": {"origins": client_host}}, supports_credentials=True)
+
     
     app.config['AIO_USERNAME'] = os.getenv('AIO_USERNAME')
     app.config['AIO_KEY'] = os.getenv('AIO_KEY')

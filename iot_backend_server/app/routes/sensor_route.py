@@ -27,7 +27,7 @@ def light_stream():
 @sensor_bp.route("/humidity/stream", methods=['GET'])
 def humidity_stream():
     return Response(
-        SensorController.get_humidity_stream(current_app.data_queue), 
+        SensorController.get._humidity_stream(current_app.data_queue), 
         mimetype="text/event-stream"
     )
 
