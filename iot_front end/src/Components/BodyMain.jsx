@@ -8,7 +8,37 @@ export default function Temperature() {
   // const [lighton, setlighton] = useState(null);
   // const [lightrate, setlightrate] = useState(null);
 
-  const toggleWater = () => setIsOn(!isOn);
+  const [timeRemaining, setTimeRemaining] = useState(0);
+  const [selectedTime, setSelectedTime] = useState(10);
+  const [isRunning, setIsRunning] = useState(false);
+
+  const toggleWater = () => {
+    if (!isRunning) {
+      setIsOn(true);
+      setIsRunning(true);
+      setTimeRemaining(selectedTime);
+
+      // Start countdown timer
+      const timer = setInterval(() => {
+        setTimeRemaining((prev) => {
+          if (prev <= 1) {
+            // Stop watering when time is up
+            setIsOn(false);
+            setIsRunning(false);
+            clearInterval(timer);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else {
+      // Manual stop
+      setIsOn(false);
+      setIsRunning(false);
+      setTimeRemaining(0);
+    }
+  };
+
   // const toggleLight = () => setlighton(!lighton);
 
   const [temperature, setTemperature] = useState(null);
@@ -601,9 +631,7 @@ export default function Temperature() {
                         <small className="text-muted d-block">Unit</small>
                         <strong>Celsius (°C)</strong>
                       </div>
-                      
                     </div>
-                    
                   </div>
                 </div>
               </div>
@@ -662,15 +690,12 @@ export default function Temperature() {
                       )}
                     </div>
 
-                     <div className="row g-2 text-center">
+                    <div className="row g-2 text-center">
                       <div className="">
                         <small className="text-muted d-block">Unit</small>
                         <strong>Percentage (%)</strong>
                       </div>
-                      
                     </div>
-                   
-
                   </div>
                 </div>
               </div>
@@ -733,7 +758,6 @@ export default function Temperature() {
                         <small className="text-muted d-block">Unit</small>
                         <strong>LUX</strong>
                       </div>
-                      
                     </div>
                   </div>
                 </div>
@@ -797,10 +821,9 @@ export default function Temperature() {
                         <small className="text-muted d-block">Unit</small>
                         <strong>Percentage (%)</strong>
                       </div>
-                      
                     </div>
-  </div>
-  </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -854,19 +877,16 @@ export default function Temperature() {
                           <div className="col-12">
                             <div
                               className="p-2 rounded-3 text-center"
-                        style={{ background: "rgba(255, 193, 7, 0.3)" }}
+                              style={{ background: "rgba(255, 193, 7, 0.3)" }}
                             >
                               <i className="fas fa-check-circle text-success mb-1 d-block"></i>
                               <small className="text-white-50">Accuracy</small>
                               <div className="fw-bold">94%</div>
                             </div>
                           </div>
-                          
                         </div>
                       </div>
                     </div>
-
-                    
                   </div>
                 </div>
               </div>
@@ -882,16 +902,16 @@ export default function Temperature() {
             🎛️ Device Controls
           </h1>
 
-          <div className="col-md-6 mx-auto mb-5">
+          <div className="col-md-6 mx-auto mb-5 ">
             <div
-              className="card border-0 shadow-lg"
+              className="card border-0 shadow-lg transition-all duration-700 hover:scale-105 hover:shadow-xl"
               style={{
                 background: "linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%)",
                 borderRadius: "20px",
               }}
             >
               <div
-                className="card-header border-0 text-center py-4"
+                className="card-header border-0 text-center py-4 "
                 style={{ background: "transparent" }}
               >
                 <div
@@ -905,6 +925,45 @@ export default function Temperature() {
                 </h5>
               </div>
               <div className="card-body text-center p-4">
+                {/* Time Selection */}
+                {!isRunning && (
+                  <div className="mb-4">
+                    <label className="text-white fw-bold mb-2 d-block">
+                      ⏱️ Set Watering Time
+                    </label>
+                    <div className="d-flex justify-content-center align-items-center gap-3 mb-3">
+                      <button
+                        className="btn btn-outline-light btn-sm"
+                        onClick={() =>
+                          setSelectedTime(Math.max(5, selectedTime - 5))
+                        }
+                        disabled={isRunning}
+                      >
+                        <i className="fas fa-minus"></i>
+                      </button>
+                      <div
+                        className="px-4 py-2 rounded-pill bg-white text-primary fw-bold"
+                        style={{ minWidth: "80px" }}
+                      >
+                        {selectedTime}s
+                      </div>
+                      <button
+                        className="btn btn-outline-light btn-sm"
+                        onClick={() =>
+                          setSelectedTime(Math.min(300, selectedTime + 5))
+                        }
+                        disabled={isRunning}
+                      >
+                        <i className="fas fa-plus"></i>
+                      </button>
+                    </div>
+                    <small className="text-white-50">
+                      Range: 5-300 seconds
+                    </small>
+                  </div>
+                )}
+
+                {/* Status Display */}
                 <div className="mb-4">
                   <div
                     className="p-3 rounded-3 d-inline-block mb-3"
@@ -921,12 +980,35 @@ export default function Temperature() {
                     >
                       Status: {isOn ? "ACTIVE" : "INACTIVE"}
                     </h6>
+                    {isRunning && (
+                      <div className="mt-2">
+                        <small className="text-white fw-bold">
+                          Time Remaining: {timeRemaining}s
+                        </small>
+                        <div
+                          className="progress mt-2"
+                          style={{
+                            height: "6px",
+                            background: "rgba(255,255,255,0.3)",
+                          }}
+                        >
+                          <div
+                            className="progress-bar bg-warning"
+                            style={{
+                              width: `${(timeRemaining / selectedTime) * 100}%`,
+                              transition: "width 1s ease",
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
+                {/* Control Button */}
                 <button
                   className={`btn btn-lg rounded-pill px-5 py-3 fw-bold ${
-                    isOn ? "btn-danger" : "btn-success"
+                    isRunning ? "btn-danger" : "btn-success"
                   }`}
                   onClick={toggleWater}
                   style={{
@@ -938,9 +1020,38 @@ export default function Temperature() {
                   }
                   onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
                 >
-                  <i className={`fas ${isOn ? "fa-stop" : "fa-play"} me-2`}></i>
-                  {isOn ? "Stop Watering" : "Start Watering"}
+                  <i
+                    className={`fas ${isRunning ? "fa-stop" : "fa-play"} me-2`}
+                  ></i>
+                  {isRunning
+                    ? "Stop Watering"
+                    : `Start Watering (${selectedTime}s)`}
                 </button>
+
+                {/* Quick Time Presets */}
+                {!isRunning && (
+                  <div className="mt-4">
+                    <small className="text-white-50 d-block mb-2">
+                      Quick Select:
+                    </small>
+                    <div className="d-flex justify-content-center gap-2 flex-wrap">
+                      {[10, 30, 60, 120].map((time) => (
+                        <button
+                          key={time}
+                          className={`btn btn-sm rounded-pill ${
+                            selectedTime === time
+                              ? "btn-light"
+                              : "btn-outline-light"
+                          }`}
+                          onClick={() => setSelectedTime(time)}
+                          style={{ minWidth: "50px" }}
+                        >
+                          {time}s
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
